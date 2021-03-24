@@ -3,8 +3,8 @@ Deze game is gebaseerd op het template voor 4HV van het Emmauscollege Rotterdam
 ## Mijn spel: *naam van het spel*
 Gemaakt door:
 - *Bastiaan Swaak*
-- *naam van leerling 2*
-
+- *Jakin Abraha*
+uhhhhh
 ## Mijn planning
 
 Basis: uitleg, spelen, afgaan en punten
