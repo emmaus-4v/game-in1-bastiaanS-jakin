@@ -5,7 +5,7 @@ Gemaakt door:
 - *Bastiaan Swaak*
 - *Jakin Abraha*
 uhhhhh
-
+huh
 ## Mijn planning
 
 Basis: uitleg, spelen, afgaan en punten
