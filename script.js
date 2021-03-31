@@ -77,9 +77,10 @@ var tekenVijand = function(x, y) {
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
-var tekenKogel = function(x, y) {
-
-
+var tekenKogel = function() {
+if (mouseIsPressed){
+     line (mouseX, mouseY , spelerX, spelerY);
+}
 };
 
 
@@ -153,6 +154,7 @@ var checkVijandGeraakt = function() {
 
   return false;
 };
+ 
 
 
 /**
