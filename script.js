@@ -45,7 +45,7 @@ var spelerSchuinRechtsOmlaag = false;
 var spelerSchuinLinksOmhoog = false;
 var spelerSchuinLinksOmlaag = false;
 
-var muisClicked = false;
+ 
 /* ********************************************* */
 /*      functies die je gebruikt in je game      */
 /* ********************************************* */
@@ -77,13 +77,15 @@ var tekenVijand = function(x, y) {
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
-var tekenKogel = function() {
-if (mouseIsPressed){
-     line (mouseX, mouseY , spelerX, spelerY);
-}
+var tekenKogel = function(x, y) {
+
 };
+ /**
+ mousePressed = function() {
+    ellipse(mouseX, mouseY, 20, 20);
 
-
+};
+/*
 /**
  * Tekent de speler
  * @param {number} x x-coördinaat
@@ -205,6 +207,7 @@ function draw() {
       beweegVijand();
       beweegKogel();
       beweegSpeler();
+      
        if(spelerOmhoog) {
         spelerY -= 10;
     }else if(spelerOmlaag) {
@@ -227,7 +230,7 @@ function draw() {
 
       tekenVeld();
       tekenVijand(vijandX, vijandY);
-      tekenKogel(kogelX, kogelY);
+      tekenKogel(mouseX, mouseY);
       tekenSpeler(spelerX, spelerY);
 
       if (checkGameOver()) {
