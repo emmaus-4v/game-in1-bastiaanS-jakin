@@ -74,11 +74,10 @@ var tekenVijand = function(x, y) {
  * @param {number} y y-coördinaat
  */
 var tekenKogel = function(x, y) {
-if (kogelAan = true){
+if (kogelAan){
     line (x, y, spelerX, spelerY)
-    kogelAan= false;
+   
 }
-
 };
 
  
