@@ -76,6 +76,7 @@ var tekenVijand = function(x, y) {
 var tekenKogel = function(x, y) {
 if (kogelAan = true){
     line (x, y, spelerX, spelerY)
+    kogelAan= false;
 }
 
 };
@@ -121,17 +122,17 @@ kogelAan = true;
 var beweegSpeler = function() {
  
     if(keyIsDown(W_KEY)){
-    spelerY = spelerY + 5
+    spelerY = spelerY - 5
     }
     if (keyIsDown(S_KEY)){
-    spelerY = spelerY - 5
+    spelerY = spelerY + 5
     }
     if (keyIsDown(A_KEY)){
     spelerX = spelerX - 5
     }
     if (keyIsDown(D_KEY)){
     spelerX = spelerX + 5
-
+    }
 };
 
 
@@ -222,4 +223,4 @@ function draw() {
       break;
   }
 
-}}
+}
