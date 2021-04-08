@@ -17,8 +17,6 @@
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
 
-document.addEventListener('keydown', keyDownHandler, false);
-document.addEventListener('keyup', keyUpHandler, false);
 
 const UITLEG = 0;
 const SPELEN = 1;
@@ -126,13 +124,13 @@ var beweegSpeler = function() {
     spelerY = spelerY + 5
     }
     if (keyIsDown(S_KEY)){
-    spelerY = splelerY - 5
+    spelerY = spelerY - 5
     }
     if (keyIsDown(A_KEY)){
-    spelerX = splelerX - 5
+    spelerX = spelerX - 5
     }
     if (keyIsDown(D_KEY)){
-    spelerX = splelerX + 5
+    spelerX = spelerX + 5
 
 };
 
@@ -202,8 +200,7 @@ function draw() {
       beweegKogel();
       beweegSpeler();
       
-  }
-    
+      
       if (checkVijandGeraakt()) {
         // punten erbij
         // nieuwe vijand maken
@@ -224,4 +221,5 @@ function draw() {
       }
       break;
   }
-}
+
+}}
