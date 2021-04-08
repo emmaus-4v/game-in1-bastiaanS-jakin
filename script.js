@@ -75,7 +75,7 @@ var tekenVijand = function(x, y) {
  */
 var tekenKogel = function(x, y) {
 if (kogelAan){
-    line (x, y, spelerX, spelerY)
+    line (x, y, spelerX, spelerY);
    
 }
 };
@@ -145,7 +145,7 @@ var beweegSpeler = function() {
  * @returns {boolean} true als vijand is geraakt
  */
 var checkVijandGeraakt = function() {
-
+if (kogelAan && mouseX === vijandX && mouseY === vijandY)
   return false;
 };
  
