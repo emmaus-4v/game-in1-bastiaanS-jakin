@@ -41,7 +41,7 @@ var D_KEY = 68;
 
 
 var kogelAan = false;
- 
+var vorigeMuisPressed = false;
 /* ********************************************* */
 /*      functies die je gebruikt in je game      */
 /* ********************************************* */
@@ -74,9 +74,9 @@ var tekenVijand = function(x, y) {
  * @param {number} y y-coördinaat
  */
 var tekenKogel = function(x, y) {
-if (kogelAan){
+if (kogelAan && vorigeMuisPressed == false){
     line (x, y, spelerX, spelerY);
-   
+   vorigeMuisPressed = true;
 }
 };
 
@@ -109,6 +109,7 @@ var beweegKogel = function() {
 kogelAan = true;
 }else {
     kogelAan = false;
+    vorigeMuisPressed = false;
 }
 };
 
