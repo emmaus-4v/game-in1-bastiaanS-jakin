@@ -131,6 +131,7 @@ kogelAan = true;
  */
 var beweegSpeler = function() {
  
+    /* beweeg bij toetsindruk */
     if(keyIsDown(W_KEY)){
     spelerY = spelerY - 50
     }
@@ -142,6 +143,11 @@ var beweegSpeler = function() {
     }
     if (keyIsDown(D_KEY)){
     spelerX = spelerX + 50
+    }
+
+    /* zorg dat speler op scherm blijft */
+    if (spelerX > 1280) {
+        spelerX = 1280;
     }
 };
 
