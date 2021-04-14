@@ -94,6 +94,12 @@ if (kogelAan && vorigeMuisPressed == false){
 var tekenSpeler = function(x, y) {
   fill("white");
   ellipse(x, y, 50, 50);
+
+  if (spelerX <= 40){
+      muurLinksGeraakt = true;
+  }else {
+      muurLinksGeraakt = false;
+  }
 };
 
 
@@ -131,7 +137,7 @@ var beweegSpeler = function() {
     if (keyIsDown(S_KEY)){
     spelerY = spelerY + 50
     }
-    if (keyIsDown(A_KEY)){
+    if (keyIsDown(A_KEY) && muurLinksGeraakt == false){
     spelerX = spelerX - 50
     }
     if (keyIsDown(D_KEY)){
