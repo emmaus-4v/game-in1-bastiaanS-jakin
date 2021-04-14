@@ -39,6 +39,10 @@ var S_KEY = 83;
 var A_KEY = 65;
 var D_KEY = 68;
 
+var muurRechtsGeraakt = false;
+var muurLinksGeraakt = false;
+var muurBovenGeraakt = false;
+var muurbenedenFeraakt = false;
 
 var kogelAan = false;
 var vorigeMuisPressed = false;
