@@ -122,16 +122,16 @@ kogelAan = true;
 var beweegSpeler = function() {
  
     if(keyIsDown(W_KEY)){
-    spelerY = spelerY - 5
+    spelerY = spelerY - 50
     }
     if (keyIsDown(S_KEY)){
-    spelerY = spelerY + 5
+    spelerY = spelerY + 50
     }
     if (keyIsDown(A_KEY)){
-    spelerX = spelerX - 5
+    spelerX = spelerX - 50
     }
     if (keyIsDown(D_KEY)){
-    spelerX = spelerX + 5
+    spelerX = spelerX + 50
     }
 };
 
