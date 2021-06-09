@@ -16,9 +16,13 @@ Basis: uitleg, spelen, afgaan en punten
 - [ ] punten op scherm zetten
 - [ ] punten kunnen scoren
 - [ ] uitlegscherm
+- [ ] muren spawnen
+- [ ] dash maken
+- [ ] muren kapot kunnen laten gaan
+- [ ] snelheid verhogen based on score
 
 Uitbreiding: *bedenk iets, bijvoorbeeld meer tegenstanders*
-- [ ] *later uitwerken*
+- [ ] betere graphics
 - [ ] *later uitwerken*
 - [ ] *later uitwerken*
 
