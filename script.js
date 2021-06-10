@@ -55,7 +55,7 @@ var vorigeMuisPressed = false;
  * Tekent het speelveld
  */
 var tekenVeld = function () {
-  fill("purple");
+  fill("blue");
   rect(20, 20, width - 2 * 20, height - 2 * 20);
 };
 
@@ -95,7 +95,7 @@ var tekenSpeler = function(x, y) {
   fill("white");
   ellipse(x, y, 50, 50);
 
-  if (spelerX <= 40){
+  if (spelerX <= 0){
       muurLinksGeraakt = true;
   }else {
       muurLinksGeraakt = false;
@@ -149,6 +149,12 @@ var beweegSpeler = function() {
     if (spelerX > 1280) {
         spelerX = 1280;
     }
+    if(spelerY < 0 ){
+        spelerY = 0;
+    }
+    if (spelerY > 720){
+        spelerY = 720;
+    }
 };
 
 
@@ -201,7 +207,7 @@ function setup() {
   createCanvas(1280, 720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('green');
+  background('purple');
 }
 
 
