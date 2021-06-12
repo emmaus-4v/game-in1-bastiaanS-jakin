@@ -42,6 +42,8 @@ var D_KEY = 68;
 
 var kogelAan = false;
 var vorigeMuisPressed = false;
+
+var raak = false;
 /* ********************************************* */
 /*      functies die je gebruikt in je game      */
 /* ********************************************* */
@@ -51,8 +53,15 @@ var vorigeMuisPressed = false;
  * Tekent het speelveld
  */
 var tekenVeld = function () {
+   
   fill("blue");
   rect(20, 20, width - 2 * 20, height - 2 * 20);
+  fill ("white");
+  textSize (30);
+  // @ts-ignore
+  text("score =" + score + " !", 30, 50,);
+  
+
 };
 
 
@@ -63,7 +72,7 @@ var tekenVeld = function () {
  */
 var tekenVijand = function(x, y) {
      fill("black");
-  ellipse(x, y, 50, 50);
+  rect(x, y, 50, 50);
 
 };
 
@@ -114,8 +123,17 @@ kogelAan = true;
     vorigeMuisPressed = false;
 }
 };
-
-
+/**
+ mouseX > vijandX && mouseX < vijandX+50
+ */
+var kogelTotVijand = function (){
+if(mouseX > 300 && mouseX < 350 ) {
+raak = true;
+}
+else{
+    raak = false;
+}
+};
 
 /**
  * Kijkt wat de toetsen/muis etc zijn.
@@ -165,8 +183,11 @@ var beweegSpeler = function() {
  * @returns {boolean} true als vijand is geraakt
  */
 var checkVijandGeraakt = function() {
-if (kogelAan && mouseX === vijandX && mouseY === vijandY)
-  return false;
+if (score == 0 ){
+
+
+
+  return true;}
 };
  
 
@@ -224,6 +245,8 @@ function draw() {
       if (checkVijandGeraakt()) {
         // punten erbij
         // nieuwe vijand maken
+        fill ("white");
+        rect (200, 200, 30, 30);
       }
       
       if (checkSpelerGeraakt()) {
