@@ -45,6 +45,7 @@ var kogelAan = false;
 var vorigeMuisPressed = false;
 
 var raak = false;
+
 /* ********************************************* */
 /*      functies die je gebruikt in je game      */
 /* ********************************************* */
@@ -60,10 +61,16 @@ var tekenVeld = function () {
   fill ("white");
   textSize (30);
   // @ts-ignore
-  text("score =" + score + " !", 30, 50,);
+  text("score = " + score , 30, 50,);
   
+  // @ts-ignore
+  text ("time = " + round(millis()/600) , 30, 80)
 
 };
+/**
+ timer
+ */
+
 
 
 /**
