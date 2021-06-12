@@ -22,6 +22,7 @@ const UITLEG = 0;
 const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
+var vijandGeraakt = false
 
 var spelerX = 200; // x-positie van speler
 var spelerY = 100; // y-positie van speler
@@ -71,9 +72,10 @@ var tekenVeld = function () {
  * @param {number} y y-coördinaat
  */
 var tekenVijand = function(x, y) {
-     fill("black");
+    if(vijandGeraakt == false){
+  fill("black");
   rect(x, y, 50, 50);
-
+    }
 };
 
 
@@ -84,7 +86,11 @@ var tekenVijand = function(x, y) {
  */
 var tekenKogel = function(x, y) {
 if (kogelAan && vorigeMuisPressed == false){
+   stroke("red");
+   strokeWeight(7);
     line (x, y, spelerX, spelerY);
+    stroke ("black");
+    strokeWeight(2);
    vorigeMuisPressed = true;
 }
 };
@@ -127,11 +133,12 @@ kogelAan = true;
  mouseX > vijandX && mouseX < vijandX+50
  */
 var kogelTotVijand = function (){
-if(mouseX > 300 && mouseX < 350 ) {
+if(mouseX > vijandX && mouseX < vijandX+50 ) {
 raak = true;
 }
 else{
     raak = false;
+    
 }
 };
 
@@ -183,11 +190,12 @@ var beweegSpeler = function() {
  * @returns {boolean} true als vijand is geraakt
  */
 var checkVijandGeraakt = function() {
-if (score == 0 ){
-
-
-
-  return true;}
+if(mouseX >vijandX && mouseX < vijandX + 50 && mouseY > vijandY && mouseY < vijandY + 50 && kogelAan && vorigeMuisPressed == false){
+    vijandGeraakt = true;
+}else{
+    vijandGeraakt = false;
+}
+  return vijandGeraakt ;
 };
  
 
@@ -245,8 +253,9 @@ function draw() {
       if (checkVijandGeraakt()) {
         // punten erbij
         // nieuwe vijand maken
-        fill ("white");
-        rect (200, 200, 30, 30);
+        score = score + 1;
+        score = score + 0;
+       
       }
       
       if (checkSpelerGeraakt()) {
