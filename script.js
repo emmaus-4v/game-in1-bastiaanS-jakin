@@ -39,10 +39,6 @@ var S_KEY = 83;
 var A_KEY = 65;
 var D_KEY = 68;
 
-var muurRechtsGeraakt = false;
-var muurLinksGeraakt = false;
-var muurBovenGeraakt = false;
-var muurbenedenFeraakt = false;
 
 var kogelAan = false;
 var vorigeMuisPressed = false;
@@ -95,11 +91,7 @@ var tekenSpeler = function(x, y) {
   fill("white");
   ellipse(x, y, 50, 50);
 
-  if (spelerX <= 0){
-      muurLinksGeraakt = true;
-  }else {
-      muurLinksGeraakt = false;
-  }
+  
 };
 
 
@@ -133,28 +125,33 @@ var beweegSpeler = function() {
  
     /* beweeg bij toetsindruk */
     if(keyIsDown(W_KEY)){
-    spelerY = spelerY - 50
+    spelerY = spelerY - 30
     }
     if (keyIsDown(S_KEY)){
-    spelerY = spelerY + 50
+    spelerY = spelerY + 30
     }
-    if (keyIsDown(A_KEY) && muurLinksGeraakt == false){
-    spelerX = spelerX - 50
+    if (keyIsDown(A_KEY)){
+    spelerX = spelerX - 30
     }
     if (keyIsDown(D_KEY)){
-    spelerX = spelerX + 50
+    spelerX = spelerX + 30
     }
 
     /* zorg dat speler op scherm blijft */
-    if (spelerX > 1280) {
-        spelerX = 1280;
+    if (spelerX > 1232) {
+        spelerX = 1232;
     }
-    if(spelerY < 0 ){
-        spelerY = 0;
+    if(spelerX < 48 ){
+        spelerX = 48;
     }
-    if (spelerY > 720){
-        spelerY = 720;
+
+    if(spelerY < 48 ){
+        spelerY = 48;
     }
+    if (spelerY > 672){
+        spelerY = 672;
+    }
+    
 };
 
 
