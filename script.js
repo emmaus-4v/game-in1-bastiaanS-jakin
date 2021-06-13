@@ -18,6 +18,8 @@
 /* ********************************************* */
 var laser = new Audio('./sounds/Laser Gun Sound Effect.mp3');
 var explosion = new Audio('./sounds/Explosion 8 Bit Sound Effect-[AudioTrimmer.com].mp3')
+var slowmo = new Audio('./sounds/Slow Motion Sound Effect-[AudioTrimmer.com].mp3')
+var soundgespeeld = false;
 
 const UITLEG = 0;
 const SPELEN = 1;
@@ -247,8 +249,10 @@ var beweegSpeler = function() {
             spelerX = muurX - 100;
         }
     }
-    if(score > 20){
+    if(score == 20 && soundgespeeld == false){
         speed = 2;
+        slowmo.play();
+        soundgespeeld = true;
     }
 };
 
