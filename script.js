@@ -20,8 +20,11 @@ var laser = new Audio('./sounds/Laser Gun Sound Effect.mp3');
 var explosion = new Audio('./sounds/Explosion 8 Bit Sound Effect-[AudioTrimmer.com].mp3')
 var slowmo = new Audio('./sounds/Slow Motion Sound Effect-[AudioTrimmer.com].mp3')
 var death = new Audio('./sounds/Super Mario World - Death (Player Down) SFX-[AudioTrimmer.com].mp3')
+var music = new Audio('./sounds/Guns Friday Night Funkin 8 Bit Remix.mp3')
+var speedUp = new Audio('./sounds/Replay Timeline Speed Up Fortnite Sound Sound Effect for editing.mp3')
 var soundgespeeld = false;
 var soundDeath = false;
+var playMusic = true;
 
 const UITLEG = 0;
 const SPELEN = 1;
@@ -30,6 +33,7 @@ var spelStatus = SPELEN;
 var vijandGeraakt = false
 var spelerGeraakt = false;
 var vijandSpeed = 15;
+var vijandRespawn = 5;
 
 var spelerX = 600; // x-positie van speler
 var spelerY = 320; // y-positie van speler
@@ -45,6 +49,7 @@ var vijandY = 20 + randomVijandPlaats;  // y-positie van vijand
 
 var muurX = 1260;
 var muurY = 0;
+var muurBewogen = false;
 
 var lives = 3;
 var score = 0; // aantal behaalde punten
@@ -117,7 +122,7 @@ function preload() {
  * @param {number} y y-coördinaat
  */
 var tekenVijand = function(x, y) {
-    if(vijandGeraakt == false && round(millis()/600) - tijdVijandGeraakt > 5 ){
+    if(vijandGeraakt == false && round(millis()/600) - tijdVijandGeraakt > vijandRespawn ){
   fill("black");
   image (imgB, x, y, vijandBreedte, vijandLengte);
   vijandSpawned = true;
@@ -163,6 +168,7 @@ var tekenSpeler = function(x, y) {
 var tekenMuur = function() {
     fill("black");
     rect(muurX, muurY, 300, 800);
+    rect(1260, 0, 300, 800 )
     rect(0, 0, 20, 800)
     rect(0, 0, 1300, 20)
     rect(0, 700, 1300, 20)
@@ -174,11 +180,14 @@ var tekenMuur = function() {
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
 var beweegVijand = function() {
+    if(playMusic){
+    music.play();}
     if(score > 5){
         vijandSpeed = 20;
     }
     if(score >  10){
         vijandSpeed = 25;
+        vijandRespawn =3;
     }
     if(vijandSpawned ) {
         vijandX = vijandX + vijandSpeed;
@@ -187,6 +196,24 @@ var beweegVijand = function() {
     }
     if(score > 24){
         vijandSpeed = 29;
+        vijandRespawn = 2;
+    }
+    if(score > 29){
+       speedUp.play();
+        vijandSpeed = 33;
+        speed = 30;
+    }
+    if(score > 32){
+        vijandRespawn = 1;
+    }
+    if(score > 40){
+        vijandRespawn = 0;
+    }
+    if(score > 60){
+        vijandSpeed = 40;
+    }
+    if(score > 100){
+        vijandSpeed = 50;
     }
 };
  
@@ -262,10 +289,17 @@ var beweegSpeler = function() {
 };
 
 var beweegmuur = function(){
-if(score>10){
+if(score>10 && muurBewogen == false){
     muurX = muurX - 1;
-}if(muurX < 1000){
+}if(muurX < 1000 && muurBewogen == false){
     muurX = 1000;
+}
+if(score > 15){
+    muurBewogen = true;
+    muurX ++;
+    if (muurX => 1260){
+        muurX = muurX + 0;
+    }
 }
 
 
@@ -381,6 +415,7 @@ function draw() {
       tekenMuur();
 
      if(lives <= 0 && soundDeath == false){
+         playMusic = false;
          spelStatus = GAMEOVER;
          death.play();
          soundDeath = true;
