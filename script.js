@@ -91,8 +91,7 @@ var tekenVeld = function () {
   // @ts-ignore
   text ("time = " + round(millis()/600) , 30, 80)
  // @ts-ignore
-  text ("tijdVijandGeraakt = " +tijdVijandGeraakt , 30, 140)
-  // @ts-ignore
+ 
   text ("lives = " +lives , 30, 110)
 };
 /**
