@@ -318,7 +318,15 @@ function setup() {
   background('black');
 }
 
+function gameover(){
+    fill("black");
+  rect(20, 20, width - 2 * 20, height - 2 * 20);
+  fill ("red");
+  textSize (50);
+  // @ts-ignore
+  text("GAME OVER" , 480, 360,);
 
+}
 /**
  * draw
  * de code in deze functie wordt meerdere keren per seconde
@@ -358,12 +366,12 @@ function draw() {
 
      if(lives <= 0 ){
          spelStatus = GAMEOVER;
-         alert("GAMEOVER");
-         document.location.reload();}
+         gameover();
+       // document.location.reload();}
      
       
 
       break;
   }
 
-}
+}}
