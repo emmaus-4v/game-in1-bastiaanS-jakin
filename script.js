@@ -41,6 +41,7 @@ var S_KEY = 83;
 var A_KEY = 65;
 var D_KEY = 68;
 var tijdVijandGeraakt = 0;
+var vijandSpawned = false;
 
 var kogelAan = false;
 var vorigeMuisPressed = false;
@@ -86,6 +87,9 @@ var tekenVijand = function(x, y) {
     if(vijandGeraakt == false && round(millis()/600) - tijdVijandGeraakt > 5 ){
   fill("black");
   rect(x, y, vijandBreedte, vijandLengte);
+  vijandSpawned = true;
+    }else{
+        vijandSpawned = false;
     }
 };
 
@@ -201,7 +205,7 @@ var beweegSpeler = function() {
  * @returns {boolean} true als vijand is geraakt
  */
 var checkVijandGeraakt = function() {
-if(mouseX >vijandX && mouseX < vijandX + vijandBreedte && mouseY > vijandY && mouseY < vijandY + vijandLengte && kogelAan && vorigeMuisPressed == false){
+if(mouseX >vijandX && mouseX < vijandX + vijandBreedte && mouseY > vijandY && mouseY < vijandY + vijandLengte && kogelAan && vorigeMuisPressed == false && vijandSpawned){
     vijandGeraakt = true;
     tijdVijandGeraakt = round(millis()/600);
 }else{
