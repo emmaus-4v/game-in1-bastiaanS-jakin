@@ -19,7 +19,9 @@
 var laser = new Audio('./sounds/Laser Gun Sound Effect.mp3');
 var explosion = new Audio('./sounds/Explosion 8 Bit Sound Effect-[AudioTrimmer.com].mp3')
 var slowmo = new Audio('./sounds/Slow Motion Sound Effect-[AudioTrimmer.com].mp3')
+var death = new Audio('./sounds/Super Mario World - Death (Player Down) SFX-[AudioTrimmer.com].mp3')
 var soundgespeeld = false;
+var soundDeath = false;
 
 const UITLEG = 0;
 const SPELEN = 1;
@@ -375,8 +377,10 @@ function draw() {
       tekenSpeler(spelerX, spelerY);
       tekenMuur();
 
-     if(lives <= 0 ){
+     if(lives <= 0 && soundDeath == false){
          spelStatus = GAMEOVER;
+         death.play();
+         soundDeath = true;
          gameover();}
            
      
