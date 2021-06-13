@@ -37,7 +37,7 @@ var randomVijandPlaats = 0;
 var vijandX = 300;   // x-positie van vijand
 var vijandY = 20 + randomVijandPlaats;  // y-positie van vijand
 
-
+var lives = 3;
 var score = 0; // aantal behaalde punten
 var speed = 20;
 
@@ -75,7 +75,9 @@ var tekenVeld = function () {
   // @ts-ignore
   text ("time = " + round(millis()/600) , 30, 80)
  // @ts-ignore
-  text ("tijdVijandGeraakt = " +tijdVijandGeraakt , 30, 110)
+  text ("tijdVijandGeraakt = " +tijdVijandGeraakt , 30, 140)
+  // @ts-ignore
+  text ("lives = " +lives , 30, 110)
 };
 /**
  timer
@@ -211,7 +213,7 @@ var beweegSpeler = function() {
  * @returns {boolean} true als vijand is geraakt
  */
 var checkVijandGeraakt = function() {
-if(mouseX >vijandX && mouseX < vijandX + vijandBreedte && mouseY > vijandY && mouseY < vijandY + vijandLengte && kogelAan && vorigeMuisPressed == false && vijandSpawned){
+if(mouseX >vijandX && mouseX < vijandX + vijandBreedte && mouseY > vijandY && mouseY < vijandY + vijandLengte && kogelAan && vorigeMuisPressed == false && vijandSpawned || spelerGeraakt){
     vijandGeraakt = true;
     tijdVijandGeraakt = round(millis()/600);
 }else{
@@ -228,9 +230,12 @@ if(mouseX >vijandX && mouseX < vijandX + vijandBreedte && mouseY > vijandY && mo
  * @returns {boolean} true als speler is geraakt
  */
 var checkSpelerGeraakt = function() {
-    if( spelerX >= vijandX && spelerX <= vijandX + vijandBreedte &&  spelerY >= vijandY && spelerY <= vijandY + vijandLengte || spelerX + 50 >= vijandX && spelerX +50 <= vijandX + vijandBreedte &&  spelerY +50 >= vijandY && spelerY + 50 <= vijandY + vijandLengte ){
-        spelerGeraakt = true
-    }
+    if(spelerX + 25 > vijandX && spelerX + 25 < vijandX + vijandBreedte && spelerY + 25 > vijandY && spelerY + 25 < vijandY + vijandLengte && vijandSpawned){
+        spelerGeraakt = true;
+
+    }else{
+        spelerGeraakt = false;
+}
 
     
   return spelerGeraakt;
@@ -286,7 +291,8 @@ function draw() {
       if (checkSpelerGeraakt()) {
         // leven eraf of gezondheid verlagen
         // eventueel: nieuwe speler maken
-        rect(10,100, 30, 39);
+        lives = lives - 1;
+        
       }
 
       tekenVeld();
