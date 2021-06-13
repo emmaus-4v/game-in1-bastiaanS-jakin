@@ -87,6 +87,18 @@ var tekenVeld = function () {
  timer
  */
 
+//afbeeldingen
+
+var imgA=0;
+var imgB=0;
+
+function preload() {
+    // @ts-ignore
+    imgA = loadImage ('./afbeeldingen/ufo.gif');
+    // @ts-ignore
+    imgB = loadImage ('./afbeeldingen/missile.png');
+}
+
 
 
 /**
@@ -97,7 +109,7 @@ var tekenVeld = function () {
 var tekenVijand = function(x, y) {
     if(vijandGeraakt == false && round(millis()/600) - tijdVijandGeraakt > 5 ){
   fill("black");
-  rect(x, y, vijandBreedte, vijandLengte);
+  image (imgB, x, y, vijandBreedte, vijandLengte);
   vijandSpawned = true;
   randomVijandPlaats = Math.floor(Math.random() * 600);
     }else{
@@ -121,15 +133,6 @@ if (kogelAan && vorigeMuisPressed == false){
    vorigeMuisPressed = true;
 }
 };
-
-//tests
-
-var imgA=0;
-
-function preload() {
-    // @ts-ignore
-    imgA = loadImage ('./afbeeldingen/ufo.gif');
-}
 
 
 
