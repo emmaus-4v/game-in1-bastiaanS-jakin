@@ -24,7 +24,7 @@ const GAMEOVER = 2;
 var spelStatus = SPELEN;
 var vijandGeraakt = false
 var spelerGeraakt = false;
-var vijandSpeed = 30;
+var vijandSpeed = 15;
 
 var spelerX = 200; // x-positie van speler
 var spelerY = 100; // y-positie van speler
@@ -51,8 +51,8 @@ var vijandSpawned = false;
 
 var kogelAan = false;
 var vorigeMuisPressed = false;
-var vijandBreedte = 50;
-var vijandLengte = 50;
+var vijandBreedte = 600;
+var vijandLengte = 300;
 
 var raak = false;
 
@@ -291,7 +291,7 @@ function draw() {
         // nieuwe vijand maken
         score = score + 1;
         score = score + 0;
-        vijandY = Math.floor(Math.random() * 600);
+        vijandY = Math.floor(Math.random() * 450);
        
       }
       
