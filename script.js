@@ -77,7 +77,7 @@ var raak = false;
 var tekenVeld = function () {
    
   fill("blue");
-  rect(20, 20, width - 2 * 20, height - 2 * 20);
+  image(imgC, 20, 20, width - 2 * 20, height - 2 * 20);
   fill ("white");
   textSize (30);
   // @ts-ignore
@@ -98,12 +98,15 @@ var tekenVeld = function () {
 
 var imgA=0;
 var imgB=0;
+var imgC=0;
 
 function preload() {
     // @ts-ignore
     imgA = loadImage ('./afbeeldingen/ufo.gif');
     // @ts-ignore
     imgB = loadImage ('./afbeeldingen/missile.png');
+    // @ts-ignore
+    imgC = loadImage ('./afbeeldingen/galaxy.png');
 }
 
 
