@@ -34,6 +34,7 @@ var vijandX = 300;   // x-positie van vijand
 var vijandY = 300;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
+var speed = 20;
 
 var W_KEY = 87;
 var S_KEY = 83;
@@ -160,16 +161,16 @@ var beweegSpeler = function() {
  
     /* beweeg bij toetsindruk */
     if(keyIsDown(W_KEY)){
-    spelerY = spelerY - 30
+    spelerY = spelerY - speed
     }
     if (keyIsDown(S_KEY)){
-    spelerY = spelerY + 30
+    spelerY = spelerY + speed
     }
     if (keyIsDown(A_KEY)){
-    spelerX = spelerX - 30
+    spelerX = spelerX - speed
     }
     if (keyIsDown(D_KEY)){
-    spelerX = spelerX + 30
+    spelerX = spelerX + speed
     }
 
     /* zorg dat speler op scherm blijft */
