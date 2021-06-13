@@ -38,7 +38,7 @@ var randomVijandPlaats = 0;
 var vijandX = -600;   // x-positie van vijand
 var vijandY = 20 + randomVijandPlaats;  // y-positie van vijand
 
-var muurX = 1300;
+var muurX = 1260;
 var muurY = 0;
 
 var lives = 3;
@@ -49,8 +49,10 @@ var W_KEY = 87;
 var S_KEY = 83;
 var A_KEY = 65;
 var D_KEY = 68;
+var SPACE_KEY = 32;
 var tijdVijandGeraakt = 0;
 var vijandSpawned = false;
+var tijdGameOver = 0;
 
 var kogelAan = false;
 var vorigeMuisPressed = false;
@@ -152,7 +154,9 @@ var tekenSpeler = function(x, y) {
 var tekenMuur = function() {
     fill("black");
     rect(muurX, muurY, 300, 800);
-
+    rect(0, 0, 20, 800)
+    rect(0, 0, 1300, 20)
+    rect(0, 700, 1300, 20)
 
 };
 
@@ -265,7 +269,7 @@ if(score>10){
  * @returns {boolean} true als vijand is geraakt
  */
 var checkVijandGeraakt = function() {
-if(mouseX >vijandX && mouseX < vijandX + vijandBreedte && mouseY > vijandY && mouseY < vijandY + vijandLengte && kogelAan && vorigeMuisPressed == false && vijandSpawned || spelerGeraakt || vijandX > 3000){
+if(mouseX >vijandX && mouseX < vijandX + vijandBreedte && mouseY > vijandY && mouseY < vijandY + vijandLengte && kogelAan && vorigeMuisPressed == false && vijandSpawned || spelerGeraakt || vijandX > 3000 || score <= 0){
     vijandGeraakt = true;
     tijdVijandGeraakt = round(millis()/600);
     vijandX = -600;
@@ -365,13 +369,14 @@ function draw() {
       tekenMuur();
 
      if(lives <= 0 ){
+         tijdGameOver =  round(millis()/600);
          spelStatus = GAMEOVER;
-         gameover();
-       // document.location.reload();}
+         gameover();}
+           
      
       
 
       break;
-  }
+  
 
 }}
