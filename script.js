@@ -169,7 +169,9 @@ var beweegVijand = function() {
    
   
     }
-    
+    if(score > 24){
+        vijandSpeed = 29;
+    }
 };
  
 
@@ -236,7 +238,9 @@ var beweegSpeler = function() {
             spelerX = muurX - 100;
         }
     }
-    
+    if(score > 20){
+        speed = 2;
+    }
 };
 
 var beweegmuur = function(){
