@@ -115,7 +115,7 @@ var tekenKogel = function(x, y) {
 if (kogelAan && vorigeMuisPressed == false){
    stroke("red");
    strokeWeight(7);
-    line (x, y, spelerX + 25, spelerY + 25);
+    line (x, y, spelerX + 50, spelerY + 50);
     stroke ("black");
     strokeWeight(2);
    vorigeMuisPressed = true;
@@ -127,6 +127,7 @@ if (kogelAan && vorigeMuisPressed == false){
 var imgA=0;
 
 function preload() {
+    // @ts-ignore
     imgA = loadImage ('./afbeeldingen/ufo.gif');
 }
 
@@ -217,8 +218,8 @@ var beweegSpeler = function() {
     }
 
     /* zorg dat speler op scherm blijft */
-    if (spelerX > 1190) {
-        spelerX = 1190;
+    if (spelerX > 1155) {
+        spelerX = 1155;
     }
     if(spelerX < 23 ){
         spelerX = 23;
@@ -227,19 +228,19 @@ var beweegSpeler = function() {
     if(spelerY < 16 ){
         spelerY = 16;
     }
-    if (spelerY > 647){
-        spelerY = 647;
+    if (spelerY > 600){
+        spelerY = 600;
     }
-    if(score > 15){
-        if(spelerX + 50 >= muurX){
-            spelerX = muurX - 50;
+    if(score > 10){
+        if(spelerX + 100 >= muurX){
+            spelerX = muurX - 100;
         }
     }
     
 };
 
 var beweegmuur = function(){
-if(score>15){
+if(score>10){
     muurX = muurX - 1;
 }if(muurX < 1000){
     muurX = 1000;
@@ -275,7 +276,7 @@ if(mouseX >vijandX && mouseX < vijandX + vijandBreedte && mouseY > vijandY && mo
  * @returns {boolean} true als speler is geraakt
  */
 var checkSpelerGeraakt = function() {
-    if(spelerX + 25 > vijandX && spelerX + 25 < vijandX + vijandBreedte && spelerY + 25 > vijandY && spelerY + 25 < vijandY + vijandLengte && vijandSpawned){
+    if(spelerX + 50 > vijandX && spelerX + 50 < vijandX + vijandBreedte && spelerY + 50 > vijandY && spelerY + 50 < vijandY + vijandLengte && vijandSpawned){
         spelerGeraakt = true;
 
     }else{
