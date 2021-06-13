@@ -83,7 +83,7 @@ var tekenVeld = function () {
  * @param {number} y y-coördinaat
  */
 var tekenVijand = function(x, y) {
-    if(vijandGeraakt == false){
+    if(vijandGeraakt == false && round(millis()/600) - tijdVijandGeraakt > 5 ){
   fill("black");
   rect(x, y, vijandBreedte, vijandLengte);
     }
