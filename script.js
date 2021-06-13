@@ -24,6 +24,7 @@ const GAMEOVER = 2;
 var spelStatus = SPELEN;
 var vijandGeraakt = false
 var spelerGeraakt = false;
+var vijandSpeed = 30;
 
 var spelerX = 200; // x-positie van speler
 var spelerY = 100; // y-positie van speler
@@ -34,7 +35,7 @@ var kogelX = 0;    // x-positie van kogel
 var kogelY = 0;    // y-positie van kogel
 
 var randomVijandPlaats = 0;
-var vijandX = 300;   // x-positie van vijand
+var vijandX = -100;   // x-positie van vijand
 var vijandY = 20 + randomVijandPlaats;  // y-positie van vijand
 
 var lives = 3;
@@ -137,7 +138,13 @@ var tekenSpeler = function(x, y) {
  * Updatet globale variabelen met positie van vijand of tegenspeler
  */
 var beweegVijand = function() {
-    
+    if(vijandSpawned ) {
+        vijandX = vijandX + vijandSpeed;
+    if(vijandX > 4500){
+        vijandX = -100;
+    }
+  
+    }
 };
  
 
@@ -216,6 +223,7 @@ var checkVijandGeraakt = function() {
 if(mouseX >vijandX && mouseX < vijandX + vijandBreedte && mouseY > vijandY && mouseY < vijandY + vijandLengte && kogelAan && vorigeMuisPressed == false && vijandSpawned || spelerGeraakt){
     vijandGeraakt = true;
     tijdVijandGeraakt = round(millis()/600);
+    vijandX = -100;
 }else{
     vijandGeraakt = false;
 }
@@ -262,7 +270,7 @@ function setup() {
   createCanvas(1280, 720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('purple');
+  background('black');
 }
 
 
