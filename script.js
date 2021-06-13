@@ -16,7 +16,8 @@
 /* ********************************************* */
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
-
+var laser = new Audio('./sounds/Laser Gun Sound Effect.mp3');
+var explosion = new Audio('./sounds/Explosion 8 Bit Sound Effect-[AudioTrimmer.com].mp3')
 
 const UITLEG = 0;
 const SPELEN = 1;
@@ -26,8 +27,8 @@ var vijandGeraakt = false
 var spelerGeraakt = false;
 var vijandSpeed = 15;
 
-var spelerX = 200; // x-positie van speler
-var spelerY = 100; // y-positie van speler
+var spelerX = 600; // x-positie van speler
+var spelerY = 320; // y-positie van speler
 
 
 
@@ -132,6 +133,7 @@ if (kogelAan && vorigeMuisPressed == false){
     line (x, y, spelerX + 50, spelerY + 50);
     stroke ("black");
     strokeWeight(2);
+    laser.play();
    vorigeMuisPressed = true;
 }
 };
@@ -273,6 +275,7 @@ if(mouseX >vijandX && mouseX < vijandX + vijandBreedte && mouseY > vijandY && mo
     vijandGeraakt = true;
     tijdVijandGeraakt = round(millis()/600);
     vijandX = -600;
+    explosion.play();
 }else{
     vijandGeraakt = false;
 }
@@ -369,7 +372,6 @@ function draw() {
       tekenMuur();
 
      if(lives <= 0 ){
-         tijdGameOver =  round(millis()/600);
          spelStatus = GAMEOVER;
          gameover();}
            
