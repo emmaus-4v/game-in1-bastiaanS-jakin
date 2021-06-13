@@ -23,15 +23,20 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 var vijandGeraakt = false
+var spelerGeraakt = false;
 
 var spelerX = 200; // x-positie van speler
 var spelerY = 100; // y-positie van speler
 
+
+
 var kogelX = 0;    // x-positie van kogel
 var kogelY = 0;    // y-positie van kogel
 
+var randomVijandPlaats = 0;
 var vijandX = 300;   // x-positie van vijand
-var vijandY = 300;   // y-positie van vijand
+var vijandY = 20 + randomVijandPlaats;  // y-positie van vijand
+
 
 var score = 0; // aantal behaalde punten
 var speed = 20;
@@ -88,6 +93,7 @@ var tekenVijand = function(x, y) {
   fill("black");
   rect(x, y, vijandBreedte, vijandLengte);
   vijandSpawned = true;
+  randomVijandPlaats = Math.floor(Math.random() * 600);
     }else{
         vijandSpawned = false;
     }
@@ -103,7 +109,7 @@ var tekenKogel = function(x, y) {
 if (kogelAan && vorigeMuisPressed == false){
    stroke("red");
    strokeWeight(7);
-    line (x, y, spelerX, spelerY);
+    line (x, y, spelerX + 25, spelerY + 25);
     stroke ("black");
     strokeWeight(2);
    vorigeMuisPressed = true;
@@ -119,7 +125,7 @@ if (kogelAan && vorigeMuisPressed == false){
  */
 var tekenSpeler = function(x, y) {
   fill("white");
-  ellipse(x, y, 50, 50);
+  rect(x, y, 50, 50);
 
   
 };
@@ -178,18 +184,18 @@ var beweegSpeler = function() {
     }
 
     /* zorg dat speler op scherm blijft */
-    if (spelerX > 1232) {
-        spelerX = 1232;
+    if (spelerX > 1207) {
+        spelerX = 1207;
     }
-    if(spelerX < 48 ){
-        spelerX = 48;
+    if(spelerX < 23 ){
+        spelerX = 23;
     }
 
-    if(spelerY < 48 ){
-        spelerY = 48;
+    if(spelerY < 23 ){
+        spelerY = 23;
     }
-    if (spelerY > 672){
-        spelerY = 672;
+    if (spelerY > 647){
+        spelerY = 647;
     }
     
 };
@@ -222,10 +228,12 @@ if(mouseX >vijandX && mouseX < vijandX + vijandBreedte && mouseY > vijandY && mo
  * @returns {boolean} true als speler is geraakt
  */
 var checkSpelerGeraakt = function() {
-    
+    if( spelerX >= vijandX && spelerX <= vijandX + vijandBreedte &&  spelerY >= vijandY && spelerY <= vijandY + vijandLengte || spelerX + 50 >= vijandX && spelerX +50 <= vijandX + vijandBreedte &&  spelerY +50 >= vijandY && spelerY + 50 <= vijandY + vijandLengte ){
+        spelerGeraakt = true
+    }
 
     
-  return false;
+  return spelerGeraakt;
 };
 
 
@@ -271,12 +279,14 @@ function draw() {
         // nieuwe vijand maken
         score = score + 1;
         score = score + 0;
+        vijandY = Math.floor(Math.random() * 600);
        
       }
       
       if (checkSpelerGeraakt()) {
         // leven eraf of gezondheid verlagen
         // eventueel: nieuwe speler maken
+        rect(10,100, 30, 39);
       }
 
       tekenVeld();
