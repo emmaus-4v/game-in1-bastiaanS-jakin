@@ -39,10 +39,12 @@ var W_KEY = 87;
 var S_KEY = 83;
 var A_KEY = 65;
 var D_KEY = 68;
-
+var tijdVijandGeraakt = 0;
 
 var kogelAan = false;
 var vorigeMuisPressed = false;
+var vijandBreedte = 50;
+var vijandLengte = 50;
 
 var raak = false;
 
@@ -65,7 +67,8 @@ var tekenVeld = function () {
   
   // @ts-ignore
   text ("time = " + round(millis()/600) , 30, 80)
-
+ // @ts-ignore
+  text ("tijdVijandGeraakt = " +tijdVijandGeraakt , 30, 110)
 };
 /**
  timer
@@ -81,7 +84,7 @@ var tekenVeld = function () {
 var tekenVijand = function(x, y) {
     if(vijandGeraakt == false){
   fill("black");
-  rect(x, y, 50, 50);
+  rect(x, y, vijandBreedte, vijandLengte);
     }
 };
 
@@ -197,8 +200,9 @@ var beweegSpeler = function() {
  * @returns {boolean} true als vijand is geraakt
  */
 var checkVijandGeraakt = function() {
-if(mouseX >vijandX && mouseX < vijandX + 50 && mouseY > vijandY && mouseY < vijandY + 50 && kogelAan && vorigeMuisPressed == false){
+if(mouseX >vijandX && mouseX < vijandX + vijandBreedte && mouseY > vijandY && mouseY < vijandY + vijandLengte && kogelAan && vorigeMuisPressed == false){
     vijandGeraakt = true;
+    tijdVijandGeraakt = round(millis()/600);
 }else{
     vijandGeraakt = false;
 }
