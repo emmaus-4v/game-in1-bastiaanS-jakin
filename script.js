@@ -38,6 +38,9 @@ var randomVijandPlaats = 0;
 var vijandX = -600;   // x-positie van vijand
 var vijandY = 20 + randomVijandPlaats;  // y-positie van vijand
 
+var muurX = 60;
+var muurY = 0;
+
 var lives = 3;
 var score = 0; // aantal behaalde punten
 var speed = 20;
@@ -133,6 +136,11 @@ var tekenSpeler = function(x, y) {
   
 };
 
+var tekenMuur = function(x, y){
+
+
+};
+
 
 /**
  * Updatet globale variabelen met positie van vijand of tegenspeler
@@ -214,7 +222,10 @@ var beweegSpeler = function() {
     
 };
 
+var beweegmuur = function(){
 
+    
+}
 
     
 
