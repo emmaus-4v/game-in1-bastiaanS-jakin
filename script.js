@@ -197,7 +197,7 @@ var beweegVijand = function() {
         vijandSpeed = 29;
         vijandRespawn = 2;
     }
-    if(score > 29){
+    if(score == 29){
        speedUp.play();
         vijandSpeed = 33;
         speed = 30;
