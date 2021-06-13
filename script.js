@@ -140,11 +140,10 @@ var tekenSpeler = function(x, y) {
 var beweegVijand = function() {
     if(vijandSpawned ) {
         vijandX = vijandX + vijandSpeed;
-    if(vijandX > 4500){
-        vijandX = -100;
-    }
+   
   
     }
+    
 };
  
 
@@ -220,7 +219,7 @@ var beweegSpeler = function() {
  * @returns {boolean} true als vijand is geraakt
  */
 var checkVijandGeraakt = function() {
-if(mouseX >vijandX && mouseX < vijandX + vijandBreedte && mouseY > vijandY && mouseY < vijandY + vijandLengte && kogelAan && vorigeMuisPressed == false && vijandSpawned || spelerGeraakt){
+if(mouseX >vijandX && mouseX < vijandX + vijandBreedte && mouseY > vijandY && mouseY < vijandY + vijandLengte && kogelAan && vorigeMuisPressed == false && vijandSpawned || spelerGeraakt || vijandX > 3000){
     vijandGeraakt = true;
     tijdVijandGeraakt = round(millis()/600);
     vijandX = -100;
@@ -308,9 +307,11 @@ function draw() {
       tekenKogel(mouseX, mouseY);
       tekenSpeler(spelerX, spelerY);
 
-      if (checkGameOver()) {
-        spelStatus = GAMEOVER;
-      }
+     if(lives <= 0 ){
+         spelStatus = GAMEOVER;
+         alert("GAMEOVER");
+         document.location.reload();}
+     
       break;
   }
 
