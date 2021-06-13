@@ -122,6 +122,16 @@ if (kogelAan && vorigeMuisPressed == false){
 }
 };
 
+//tests
+
+var imgA=0;
+
+function preload() {
+    imgA = loadImage ('./afbeeldingen/ufo.gif');
+}
+
+
+
  
 
 /**
@@ -130,8 +140,7 @@ if (kogelAan && vorigeMuisPressed == false){
  * @param {number} y y-coördinaat
  */
 var tekenSpeler = function(x, y) {
-  fill("white");
-  rect(x, y, 50, 50);
+ image (imgA, x, y, 100, 100); 
 
   
 };
@@ -208,15 +217,15 @@ var beweegSpeler = function() {
     }
 
     /* zorg dat speler op scherm blijft */
-    if (spelerX > 1207) {
-        spelerX = 1207;
+    if (spelerX > 1190) {
+        spelerX = 1190;
     }
     if(spelerX < 23 ){
         spelerX = 23;
     }
 
-    if(spelerY < 23 ){
-        spelerY = 23;
+    if(spelerY < 16 ){
+        spelerY = 16;
     }
     if (spelerY > 647){
         spelerY = 647;
@@ -344,6 +353,8 @@ function draw() {
          alert("GAMEOVER");
          document.location.reload();}
      
+      
+
       break;
   }
 
